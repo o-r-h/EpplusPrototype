@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Example Excel donwload</h1>
+    <p class="lead">Example for download a Excel file using EPPLUS (free version).</p>
+    <p class="lead">All clases are on Classes Folder </p>
+    <p class="lead">For fill tables we created a generic function to fill table on ExcelHelper.cs </p>
+
+    <button onclick="DownloadExcel()" class="btn  btn-success" style="margin-top:20px;">Excel Export</button>
+</div>
+
+
+<script>
+
+    function DownloadExcel() {
+        $.ajax({
+            type: "POST",
+            url: "/Home/ExcelExport",
+            cache: false,
+            success: function (data) {
+                window.location = '/Home/Download';
+            },
+            error: function (data) {
+                window.alert("Error");
+            }
+        });
+    }
+</script>
